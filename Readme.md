@@ -8,7 +8,7 @@ Koa view render based on [Swig](http://paularmstrong.github.io/swig/).
 
 ```js
 var koa = require('koa');
-var render = require('koa-ejs');
+var render = require('koa-swig');
 var app = koa();
 
 render(app, {
