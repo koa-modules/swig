@@ -1,6 +1,6 @@
 # koa-swig
 
-Koa view render based on [Swig](http://paularmstrong.github.io/swig/).
+[Koa][] view render based on [Swig][].
 
 ### Usage
 
@@ -49,3 +49,6 @@ app.listen(2333);
 ### Licences
 
 MIT
+
+[koa]: http://koajs.com
+[swig]: http://paularmstrong.github.io/swig/
