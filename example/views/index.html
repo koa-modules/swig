@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ name }}{{ version|formatVersion }}{% endblock %}
+
+{% block content %}
+<p>By {{ user.name }}, {{ user.email }}</p>
+{% endblock %}

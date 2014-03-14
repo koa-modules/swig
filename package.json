@@ -1,0 +1,28 @@
+{
+  "name": "koa-swig",
+  "version": "0.0.1",
+  "description": "Koa view render based on Swig.",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "keywords": [
+    "koa",
+    "render",
+    "view",
+    "swig"
+  ],
+  "author": "fundon <cfddream@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "koa": "^0.5.1",
+    "supertest": "^0.9.0",
+    "should": "^3.1.3",
+    "mocha": "^1.18.0"
+  },
+  "dependencies": {
+    "swig": "^1.3.2",
+    "co-fs-plus": "0.0.3",
+    "debug": "^0.7.4"
+  }
+}
