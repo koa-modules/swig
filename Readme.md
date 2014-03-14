@@ -4,6 +4,12 @@ Koa view render based on [Swig](http://paularmstrong.github.io/swig/).
 
 ### Usage
 
+#### Install
+
+```
+npm install koa-swig
+```
+
 #### Example
 
 ```js
