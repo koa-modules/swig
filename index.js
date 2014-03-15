@@ -104,8 +104,7 @@ function swigRender(app, settings) {
 exports.swig = swig;
 
 function setFilters(swig, filters) {
-  var name;
-  for (name in filters) {
+  for (var name in filters) {
     swig.setFilter(name, filters[name]);
   }
 }
@@ -114,13 +113,12 @@ function setTags(swig, tags) {
   var name, tag;
   for (name in tags) {
     tag = tags[name];
-    swig.setTag(name, tag.parse, tag.compile, tag.ends, tags.blockLevel);
+    swig.setTag(name, tag.parse, tag.compile, tag.ends, tag.blockLevel);
   }
 }
 
 function setExtensions(swig, extensions) {
-  var name;
-  for (name in extensions) {
+  for (var name in extensions) {
     swig.setExtension(name, extensions[name]);
   }
 }
