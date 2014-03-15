@@ -46,7 +46,7 @@ app.listen(2333);
 
 * tags: swig custom [tags](http://paularmstrong.github.io/swig/docs/extending/#tags)
 
-* extensions: swig extensions for custom tags
+* extensions: add extensions for custom tags
 
 * ext: default view extname
 
