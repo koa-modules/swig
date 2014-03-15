@@ -19,10 +19,10 @@ var join = path.join;
 module.exports = swigRender;
 
 /**
- *  Default render options.
+ *  Default render settings.
  */
 
-var _settings = {
+var defaultSettings = {
   autoescape: true,
   root: 'views',
   cache: 'memory',
@@ -37,7 +37,7 @@ var _settings = {
 
 function renderFile(pathName, locals) {
   return function (done) {
-    swig.renderFile(pathName, locals, done); 
+    swig.renderFile(pathName, locals, done);
   };
 }
 
@@ -48,11 +48,8 @@ function swigRender(app, settings) {
 
   app.context.render = render;
 
-  if (!settings) {
-    settings = _settings;
-  } else {
-    merge(settings, _settings);
-  }
+  settings = settings || Object.create(null);
+  merge(settings, defaultSettings);
 
   var root = settings.root;
 
