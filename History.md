@@ -1,3 +1,10 @@
+0.0.4 / 2014-03-16
+==================
+
+* change `_settings` to `defaultSettings`
+
+* if custom `settings` is undefined, merge from `defaultSettings`
+
 0.0.3 / 2014-03-15
 ==================
 
