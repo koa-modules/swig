@@ -14,7 +14,7 @@ describe('koa-swig', function () {
     var app = koa();
     it('should filters.format ok', function (done) {
       render(app, {
-        views: path.join(__dirname, '../example'),
+        root: path.join(__dirname, '../example'),
 	ext: 'txt',
         filters: {
           format: function (v) { return v.toUpperCase(); }
@@ -43,4 +43,25 @@ describe('koa-swig', function () {
       .expect(200, done);
     });
   });
+
+  describe('tags', function () {
+    var headerTag = require('../example/header-tag');
+    var app = koa();
+    render(app, {
+      root: path.join(__dirname, '../example'),
+      ext: 'html',
+      tags: {
+        header: headerTag
+      }
+    });
+    app.use(function *() {
+      yield this.render('header');
+    });
+    it('should add tag ok', function (done) {
+      request(app.listen())
+        .get('/')
+        .expect(200, done);
+    });
+  });
+
 });

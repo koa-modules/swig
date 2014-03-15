@@ -1,6 +1,6 @@
 # koa-swig
 
-[Koa][] view render based on [Swig][].
+[Koa][] view render based on [Swig][], support tags, filters, and extensions.
 
 ### Usage
 
@@ -18,12 +18,14 @@ var render = require('koa-swig');
 var app = koa();
 
 render(app, {
+  root: path.join(__dirname, 'views'),
   autoescape: true,
   cache: 'memory', // disable, set to false
-  views: path.join(__dirname, 'views'),
   ext: 'html',
   locals: locals,
-  filters: filters
+  filters: filters,
+  tags: tags,
+  extensions: extensions
 });
 
 app.use(function *() {
@@ -40,11 +42,20 @@ app.listen(2333);
   - cache
   - locals
 
-* filters: swig custon [filters](http://paularmstrong.github.io/swig/docs/extending/#filters)
+* filters: swig custom [filters](http://paularmstrong.github.io/swig/docs/extending/#filters)
+
+* tags: swig custom [tags](http://paularmstrong.github.io/swig/docs/extending/#tags)
+
+* extensions: swig extensions for custom tags
 
 * ext: default view extname
 
-* views: view root directory
+* root: view root directory
+
+
+#### Others
+
+* [swig-extras](https://github.com/paularmstrong/swig-extras) A collection of handy tags, filters, and extensions for Swig.
 
 ### Licences
 

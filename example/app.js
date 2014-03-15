@@ -20,7 +20,7 @@ var filters = {
 };
 
 render(app, {
-  views: path.join(__dirname, 'views'),
+  root: path.join(__dirname, 'views'),
   ext: 'html',
   locals: locals,
   filters: filters

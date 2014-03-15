@@ -24,11 +24,13 @@ module.exports = swigRender;
 
 var _settings = {
   autoescape: true,
+  root: 'views',
   cache: 'memory',
   ext:  'html',
-  filters: {},
-  locals: {},
-  views: 'views'
+  locals: Object.create(null),
+  filters: Object.create(null),
+  tags: Object.create(null),
+  extensions: Object.create(null)
 };
 
 // Generator `renderFile`
@@ -52,21 +54,23 @@ function swigRender(app, settings) {
     merge(settings, _settings);
   }
 
-  var dir = settings.views;
+  var root = settings.root;
 
   var cache = settings.cache;
-  if (settings.hasOwnProperty('cache') || settings.hasOwnProperty('autoescape')) {
-    swig.setDefaults({
-      autoescape: settings.autoescape,
-      cache: cache
-    });
-  }
+  swig.setDefaults({
+    cache: cache,
+    autoescape: settings.autoescape,
+    locals: settings.locals
+  });
 
-  // swig global filters
-  var filters = settings.filters;
-  for (var name in filters) {
-    swig.setFilter(name, filters[name]);
-  }
+  // swig custom filters
+  setFilters(swig, settings.filters);
+
+  // swig custom tags
+  setTags(swig, settings.tags);
+
+  // add extensions for custom tags
+  setExtensions(swig, settings.extensions);
 
   function *render(view, options) {
     if (!options) {
@@ -82,7 +86,7 @@ function swigRender(app, settings) {
     }
 
     // resolve
-    view = join(dir, view);
+    view = join(root, view);
 
     // cache
     options.cache = cache;
@@ -98,6 +102,28 @@ function swigRender(app, settings) {
 }
 
 exports.swig = swig;
+
+function setFilters(swig, filters) {
+  var name;
+  for (name in filters) {
+    swig.setFilter(name, filters[name]);
+  }
+}
+
+function setTags(swig, tags) {
+  var name, tag;
+  for (name in tags) {
+    tag = tags[name];
+    swig.setTag(name, tag.parse, tag.compile, tag.ends, tags.blockLevel);
+  }
+}
+
+function setExtensions(swig, extensions) {
+  var name;
+  for (name in extensions) {
+    swig.setExtension(name, extensions[name]);
+  }
+}
 
 function merge(target, source) {
   for (var prop in source) {

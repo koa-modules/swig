@@ -1,7 +1,7 @@
 {
   "name": "koa-swig",
-  "version": "0.0.2",
-  "description": "Koa view render based on Swig.",
+  "version": "0.0.3",
+  "description": "Koa view render based on Swig, support tags, filters, and extensions.",
   "main": "index.js",
   "scripts": {
     "test": "make test"
@@ -24,5 +24,12 @@
     "swig": "^1.3.2",
     "co-fs-plus": "0.0.3",
     "debug": "^0.7.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/fundon/koa-swig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fundon/koa-swig/issues"
   }
 }
