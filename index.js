@@ -77,7 +77,7 @@ function swigRender(app, settings) {
   setExtensions(swig, settings.extensions);
 
   function *render(view, options) {
-    var opts = Object.create(null);
+    var opts = {};
 
     // default extname
     var e = extname(view);
