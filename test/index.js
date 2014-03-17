@@ -39,7 +39,7 @@ describe('koa-swig', function () {
       request(app)
       .get('/')
       .expect('content-type', 'text/html; charset=utf-8')
-      .expect(/<title>koa-swig@v0.0.\d<\/title>/)
+      .expect(/<title>koa-swig@v0.1.*<\/title>/)
       .expect(200, done);
     });
   });

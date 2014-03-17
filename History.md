@@ -1,3 +1,11 @@
+
+0.1.0 / 2014-03-18
+==================
+
+* merge `ctx.locals` to locals, supports koa-locals
+* refactos `*render`
+* add comments 
+
 0.0.4 / 2014-03-16
 ==================
 

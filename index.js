@@ -48,8 +48,15 @@ function swigRender(app, settings) {
 
   app.context.render = render;
 
-  settings = settings || Object.create(null);
-  merge(settings, defaultSettings);
+  var sets = Object.create(null);
+  // merge default settings
+  mixin(sets, defaultSettings);
+
+  // merge settings
+  if (settings) {
+    mixin(sets, settings)
+  }
+  settings = sets;
 
   var root = settings.root;
 
@@ -70,9 +77,7 @@ function swigRender(app, settings) {
   setExtensions(swig, settings.extensions);
 
   function *render(view, options) {
-    if (!options) {
-      options = {};
-    }
+    var opts = Object.create(null);
 
     // default extname
     var e = extname(view);
@@ -85,13 +90,21 @@ function swigRender(app, settings) {
     // resolve
     view = join(root, view);
 
+    // merge ctx.locals, for `koa-locals`
+    mixin(opts, this.locals || Object.create(null));
+
+    // merge settings.locals
+    mixin(opts, settings.locals)
+
+    options = options || Object.create(null);
     // cache
     options.cache = cache;
 
-    merge(options, settings.locals);
+    // merge options
+    mixin(opts, options);
 
-    debug('render %s %j', view, options);
-    var html = yield renderFile(view, options);
+    debug('render %s %j', view, opts);
+    var html = yield renderFile(view, opts);
     this.type = 'html';
     this.length = html.length;
     this.body = html;
@@ -100,11 +113,19 @@ function swigRender(app, settings) {
 
 exports.swig = swig;
 
+/**
+ *  Add filters for Swig
+ */
+
 function setFilters(swig, filters) {
   for (var name in filters) {
     swig.setFilter(name, filters[name]);
   }
 }
+
+/**
+ *  Add tags for Swig
+ */
 
 function setTags(swig, tags) {
   var name, tag;
@@ -114,17 +135,25 @@ function setTags(swig, tags) {
   }
 }
 
+/**
+ *  Add extensions for Swig
+ */
+
 function setExtensions(swig, extensions) {
   for (var name in extensions) {
     swig.setExtension(name, extensions[name]);
   }
 }
 
-function merge(target, source) {
-  for (var prop in source) {
-    if (prop in target) {
-      continue;
+/**
+ *  Merge object b with object a.
+ */
+
+function mixin(a, b) {
+  if (a && b) {
+    for (var key in b) {
+      a[key] = b[key];
     }
-    target[prop] = source[prop];
   }
-}
+  return a;
+};
