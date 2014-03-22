@@ -2,6 +2,8 @@
 
 [Koa][] view render based on [Swig][], support tags, filters, and extensions.
 
+  [![Build Status](https://travis-ci.org/fundon/koa-swig.svg)](https://travis-ci.org/fundon/koa-swig)
+
 ### Usage
 
 #### Install
