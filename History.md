@@ -1,4 +1,10 @@
 
+0.2.0 / 2014-03-22
+==================
+
+* automatically merge `ctx.flash`.
+* add .travis.yml
+
 0.1.1 / 2014-03-18
 ==================
 
@@ -9,7 +15,7 @@
 
 * merge `ctx.locals` to locals, supports koa-locals
 * refactos `*render`
-* add comments 
+* add comments
 
 0.0.4 / 2014-03-16
 ==================

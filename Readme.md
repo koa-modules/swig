@@ -10,6 +10,12 @@
 npm install koa-swig
 ```
 
+##### Features
+
+* First, automatically merge `ctx.locals`.
+* Second, automatically merge `ctx.flash`.
+* Finally, merge custom locals.
+
 #### Example
 
 ```js

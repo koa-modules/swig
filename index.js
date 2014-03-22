@@ -93,6 +93,9 @@ function swigRender(app, settings) {
     // merge ctx.locals, for `koa-locals`
     mixin(opts, this.locals || Object.create(null));
 
+    // merge ctx.flash, for `koa-flash`
+    mixin(opts, (this.flash && { flash: this.flash }) || Object.create(null));
+
     // merge settings.locals
     mixin(opts, settings.locals)
 

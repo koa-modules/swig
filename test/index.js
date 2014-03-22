@@ -39,7 +39,7 @@ describe('koa-swig', function () {
       request(app)
       .get('/')
       .expect('content-type', 'text/html; charset=utf-8')
-      .expect(/<title>koa-swig@v0.1.*<\/title>/)
+      .expect(/<title>koa-swig.*<\/title>/)
       .expect(200, done);
     });
   });
@@ -64,4 +64,25 @@ describe('koa-swig', function () {
     });
   });
 
+  describe('flash', function () {
+    var app = koa();
+    var session = require('koa-session');
+    var flash = require('koa-flash');
+    app.keys = ['foo'];
+    app.use(session());
+    app.use(flash({ key: 'bar' }));
+    render(app, {
+      root: path.join(__dirname, '../example')
+    });
+    app.use(function *() {
+      this.flash.notice = 'Success!';
+      yield this.render('flash');
+    });
+    it('should success', function (done) {
+      request(app.listen())
+      .get('/')
+      .expect('Success!\n')
+      .expect(200, done);
+    });
+  });
 });
