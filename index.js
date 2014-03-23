@@ -159,4 +159,4 @@ function mixin(a, b) {
     }
   }
   return a;
-};
+}
