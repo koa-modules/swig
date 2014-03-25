@@ -81,7 +81,7 @@ describe('koa-swig', function () {
     it('should success', function (done) {
       request(app.listen())
       .get('/')
-      .expect('Success!\n')
+      .expect(/Success/)
       .expect(200, done);
     });
   });

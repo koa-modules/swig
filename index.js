@@ -12,10 +12,10 @@ var extname = path.extname;
 var join = path.join;
 
 /**
- *  Expose `swigRender`.
+ *  Expose `render`.
  */
 
-module.exports = swigRender;
+module.exports = render;
 
 /**
  *  Default render settings.
@@ -25,11 +25,13 @@ var defaultSettings = {
   autoescape: true,
   root: 'views',
   cache: 'memory',
-  ext:  'html',
-  locals: Object.create(null),
-  filters: Object.create(null),
-  tags: Object.create(null),
-  extensions: Object.create(null)
+  ext:  'html'
+  /*
+  locals: {},
+  filters: {}.
+  tags: {},
+  extensions: {}
+  */
 };
 
 // Generator `renderFile`
@@ -40,16 +42,15 @@ function renderFile(pathName, locals) {
   };
 }
 
-function swigRender(app, settings) {
+function render(app, settings) {
   if (app.context.render) {
     return;
   }
 
   app.context.render = render;
 
-  var sets = Object.create(null);
   // merge default settings
-  mixin(sets, defaultSettings);
+  var sets = Object.create(defaultSettings);
 
   // merge settings
   if (settings) {
@@ -58,12 +59,12 @@ function swigRender(app, settings) {
   settings = sets;
 
   var root = settings.root;
-
+  var locals = settings.locals;
   var cache = settings.cache;
   swig.setDefaults({
-    cache: cache,
     autoescape: settings.autoescape,
-    locals: settings.locals
+    cache: cache,
+    locals: locals
   });
 
   // swig custom filters
@@ -76,8 +77,6 @@ function swigRender(app, settings) {
   setExtensions(swig, settings.extensions);
 
   function *render(view, options) {
-    var opts = {};
-
     // default extname
     var e = extname(view);
 
@@ -90,20 +89,16 @@ function swigRender(app, settings) {
     view = join(root, view);
 
     // merge ctx.locals, for `koa-locals`
-    mixin(opts, this.locals || Object.create(null));
+    var opts = this.locals || {};
 
     // merge ctx.flash, for `koa-flash`
-    mixin(opts, (this.flash && { flash: this.flash }) || Object.create(null));
+    mixin(opts, { flash: this.flash, cache: cache });
 
     // merge settings.locals
-    mixin(opts, settings.locals)
-
-    options = options || Object.create(null);
-    // cache
-    options.cache = cache;
+    mixin(opts, locals)
 
     // merge options
-    mixin(opts, options);
+    mixin(opts, options || {});
 
     debug('render %s %j', view, opts);
     var html = yield renderFile(view, opts);
@@ -112,6 +107,10 @@ function swigRender(app, settings) {
     this.body = html;
   }
 }
+
+/**
+ *  Expose `swig`
+ */
 
 exports.swig = swig;
 
