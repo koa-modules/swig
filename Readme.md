@@ -1,8 +1,7 @@
-# koa-swig
+# koa-swig [![Build Status](https://travis-ci.org/fundon/koa-swig.svg)](https://travis-ci.org/fundon/koa-swig)
 
 [Koa][] view render based on [Swig][], support tags, filters, and extensions.
 
-  [![Build Status](https://travis-ci.org/fundon/koa-swig.svg)](https://travis-ci.org/fundon/koa-swig)
   [![NPM](https://nodei.co/npm/koa-swig.png?downloads=true)](https://nodei.co/npm/koa-swig/)
 
 ### Usage
