@@ -8,7 +8,6 @@
 var debug = require('debug')('koa:swig');
 var path = require('path');
 var swig = require('swig');
-var fs = require('co-fs-plus');
 var extname = path.extname;
 var join = path.join;
 

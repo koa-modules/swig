@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "swig": "^1.3.2",
-    "co-fs-plus": "0.0.3",
     "debug": "^0.7.4"
   },
   "repository": {
