@@ -1,4 +1,3 @@
-
 'use strict';
 
 /**
@@ -16,7 +15,7 @@ var join = path.join;
  *  Expose `render`.
  */
 
-module.exports = render;
+module.exports = renderer;
 
 /**
  *  Default render settings.
@@ -43,7 +42,7 @@ function renderFile(pathName, locals) {
   };
 }
 
-function render(app, settings) {
+function renderer(app, settings) {
   if (app.context.render) {
     return;
   }
@@ -55,7 +54,7 @@ function render(app, settings) {
 
   // merge settings
   if (settings) {
-    mixin(sets, settings)
+    mixin(sets, settings);
   }
   settings = sets;
 
@@ -96,13 +95,14 @@ function render(app, settings) {
     mixin(opts, { flash: this.flash, cache: cache });
 
     // merge settings.locals
-    mixin(opts, locals)
+    mixin(opts, locals);
 
     // merge options
     mixin(opts, options || {});
 
     debug('render %s %j', view, opts);
     var html = yield renderFile(view, opts);
+    /* jshint validthis:true */
     this.type = 'html';
     this.length = html.length;
     this.body = html;
