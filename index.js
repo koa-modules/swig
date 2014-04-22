@@ -6,6 +6,7 @@
  */
 
 var debug = require('debug')('koa:swig');
+var mixin = require('utils-merge');
 var path = require('path');
 var swig = require('swig');
 var extname = path.extname;
@@ -144,17 +145,4 @@ function setExtensions(swig, extensions) {
   for (var name in extensions) {
     swig.setExtension(name, extensions[name]);
   }
-}
-
-/**
- *  Merge object b with object a.
- */
-
-function mixin(a, b) {
-  if (a && b) {
-    for (var key in b) {
-      a[key] = b[key];
-    }
-  }
-  return a;
 }
