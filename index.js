@@ -9,7 +9,7 @@ var mixin = require('utils-merge');
 var path = require('path');
 var swig = require('swig');
 var extname = path.extname;
-var join = path.join;
+var resolve = path.resolve;
 
 /**
  *  Expose `render`.
@@ -86,7 +86,7 @@ function renderer(app, settings) {
     }
 
     // resolve
-    view = join(root, view);
+    view = resolve(root, view);
 
     // merge ctx.locals, for `koa-locals`
     var opts = this.locals || {};
