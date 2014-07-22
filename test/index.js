@@ -11,25 +11,44 @@ var koa = require('koa');
 
 describe('koa-swig', function () {
   describe('render', function () {
-    var app = koa();
-    it('should filters.format ok', function (done) {
+    it('should relative dir ok', function (done) {
+      var app = koa();
       render(app, {
-        root: path.join(__dirname, '../example'),
-	ext: 'txt',
+        root: 'example',
+        ext: 'txt',
         filters: {
           format: function (v) { return v.toUpperCase(); }
         }
       });
-      app.context.render.should.be.Function;
       app.use(function *() {
-	yield this.render('basic', {
-	  name: 'koa-swig'
-	})
+        yield this.render('basic', {
+          name: 'koa-swig'
+        });
       });
       request(app.listen())
-	.get('/')
-	.expect('KOA-SWIG\n')
-	.expect(200, done);
+        .get('/')
+        .expect('KOA-SWIG\n')
+        .expect(200, done);
+    });
+
+    it('should filters.format ok', function (done) {
+      var app = koa();
+      render(app, {
+        root: path.join(__dirname, '../example'),
+        ext: 'txt',
+        filters: {
+          format: function (v) { return v.toUpperCase(); }
+        }
+      });
+      app.use(function *() {
+        yield this.render('basic', {
+          name: 'koa-swig'
+        });
+      });
+      request(app.listen())
+        .get('/')
+        .expect('KOA-SWIG\n')
+        .expect(200, done);
     });
   });
 
