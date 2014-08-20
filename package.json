@@ -1,6 +1,6 @@
 {
   "name": "koa-swig",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Koa view render based on Swig, support tags, filters, and extensions.",
   "main": "index.js",
   "scripts": {
