@@ -104,4 +104,11 @@ describe('koa-swig', function () {
       .expect(200, done);
     });
   });
+
+  describe('expose swig', function () {
+    var swig = render.swig;
+    it('swig should be exposed', function () {
+      swig.version.should.equal('1.4.2');
+    });
+  });
 });
