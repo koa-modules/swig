@@ -15,7 +15,7 @@ var resolve = path.resolve;
  *  Expose `render`.
  */
 
-module.exports = renderer;
+exports = module.exports = renderer;
 
 /**
  *  Default render settings.
