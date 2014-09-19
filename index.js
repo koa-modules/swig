@@ -104,7 +104,6 @@ function renderer(app, settings) {
     var html = yield renderFile(view, opts);
     /* jshint validthis:true */
     this.type = 'html';
-    this.length = html.length;
     this.body = html;
   }
 }

@@ -58,6 +58,7 @@ describe('koa-swig', function () {
       request(app)
       .get('/')
       .expect('content-type', 'text/html; charset=utf-8')
+      .expect('content-length', '186')
       .expect(/<title>koa-swig.*<\/title>/)
       .expect(200, done);
     });
