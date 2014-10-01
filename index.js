@@ -25,7 +25,8 @@ var defaultSettings = {
   autoescape: true,
   root: 'views',
   cache: 'memory',
-  ext:  'html'
+  ext:  'html',
+  wResponse:true
   /*
   locals: {},
   filters: {}.
@@ -103,8 +104,14 @@ function renderer(app, settings) {
     debug('render %s %j', view, opts);
     var html = yield renderFile(view, opts);
     /* jshint validthis:true */
-    this.type = 'html';
-    this.body = html;
+
+    if (settings.wResponse === true) {
+      this.type = 'html';
+      this.body = html;
+    }
+
+    return html;
+
   }
 }
 
