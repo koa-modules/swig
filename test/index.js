@@ -51,7 +51,7 @@ describe('koa-swig', function () {
         .expect(200, done);
     });
 
-    it('should not return response with wResponse = false', function (done) {
+    it('should not return response with writeBody = false', function (done) {
       var app = koa();
       render(app, {
         root: path.join(__dirname, '../example'),
@@ -59,7 +59,7 @@ describe('koa-swig', function () {
         filters: {
           format: function (v) { return v.toUpperCase(); }
         },
-        wResponse:false
+        writeBody:false
       });
       app.use(function *() {
         yield this.render('basic', {
@@ -72,7 +72,7 @@ describe('koa-swig', function () {
         .expect(404, done);
     });
 
-    it('should return response with wResponse = false and write the body manually', function (done) {
+    it('should return response with writeBody = false and write the body manually', function (done) {
       var app = koa();
       render(app, {
         root: path.join(__dirname, '../example'),
@@ -80,7 +80,7 @@ describe('koa-swig', function () {
         filters: {
           format: function (v) { return v.toUpperCase(); }
         },
-        wResponse:false
+        writeBody:false
       });
       app.use(function *() {
         var html = yield this.render('basic', {

@@ -26,7 +26,7 @@ var defaultSettings = {
   root: 'views',
   cache: 'memory',
   ext:  'html',
-  wResponse:true
+  writeBody:true
   /*
   locals: {},
   filters: {}.
@@ -105,7 +105,7 @@ function renderer(app, settings) {
     var html = yield renderFile(view, opts);
     /* jshint validthis:true */
 
-    if (settings.wResponse === true) {
+    if (settings.writeBody === true) {
       this.type = 'html';
       this.body = html;
     }
