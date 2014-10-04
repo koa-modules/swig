@@ -50,6 +50,51 @@ describe('koa-swig', function () {
         .expect('KOA-SWIG\n')
         .expect(200, done);
     });
+
+    it('should not return response with writeBody = false', function (done) {
+      var app = koa();
+      render(app, {
+        root: path.join(__dirname, '../example'),
+        ext: 'txt',
+        filters: {
+          format: function (v) { return v.toUpperCase(); }
+        },
+        writeBody:false
+      });
+      app.use(function *() {
+        yield this.render('basic', {
+          name: 'koa-swig'
+        });
+      });
+      request(app.listen())
+        .get('/')
+        .expect('Not Found')
+        .expect(404, done);
+    });
+
+    it('should return response with writeBody = false and write the body manually', function (done) {
+      var app = koa();
+      render(app, {
+        root: path.join(__dirname, '../example'),
+        ext: 'txt',
+        filters: {
+          format: function (v) { return v.toUpperCase(); }
+        },
+        writeBody:false
+      });
+      app.use(function *() {
+        var html = yield this.render('basic', {
+          name: 'koa-swig'
+        });
+        this.type = 'html';
+        this.body = html;
+      });
+      request(app.listen())
+        .get('/')
+        .expect('KOA-SWIG\n')
+        .expect(200, done);
+    });
+
   });
 
   describe('server', function () {
@@ -112,4 +157,6 @@ describe('koa-swig', function () {
       swig.version.should.equal('1.4.2');
     });
   });
+
+
 });
