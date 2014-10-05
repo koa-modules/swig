@@ -60,7 +60,7 @@ app.listen(2333);
 
 * root: view root directory
 
-* writeBody: default(true) auto write body html response
+* writeBody: default(true) auto write body and response html
 
 
 #### Others

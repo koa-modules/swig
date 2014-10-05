@@ -25,8 +25,8 @@ var defaultSettings = {
   autoescape: true,
   root: 'views',
   cache: 'memory',
-  ext:  'html',
-  writeBody:true
+  ext: 'html',
+  writeBody: true
   /*
   locals: {},
   filters: {}.
@@ -106,7 +106,6 @@ function renderer(app, settings) {
     /* jshint validthis:true */
 
     if (settings.writeBody === true) {
-      this.type = 'html';
       this.body = html;
     }
 

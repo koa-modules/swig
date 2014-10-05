@@ -59,7 +59,7 @@ describe('koa-swig', function () {
         filters: {
           format: function (v) { return v.toUpperCase(); }
         },
-        writeBody:false
+        writeBody: false
       });
       app.use(function *() {
         yield this.render('basic', {
@@ -80,7 +80,7 @@ describe('koa-swig', function () {
         filters: {
           format: function (v) { return v.toUpperCase(); }
         },
-        writeBody:false
+        writeBody: false
       });
       app.use(function *() {
         var html = yield this.render('basic', {
