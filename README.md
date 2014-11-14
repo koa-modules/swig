@@ -1,8 +1,14 @@
-# koa-swig [![Build Status](https://travis-ci.org/koa-modules/koa-swig.svg)](https://travis-ci.org/koa-modules/koa-swig)
+# koa-swig
+
+[![NPM version][npm-img]][npm-url]
+[![Build status][travis-img]][travis-url]
+[![Test coverage][coveralls-img]][coveralls-url]
+[![License][license-img]][license-url]
+[![Dependency status][david-img]][david-url]
 
 [Koa][] view render based on [Swig][], support tags, filters, and extensions.
 
-  [![NPM](https://nodei.co/npm/koa-swig.png?downloads=true)](https://nodei.co/npm/koa-swig/)
+[![NPM](https://nodei.co/npm/koa-swig.png?downloads=true)](https://nodei.co/npm/koa-swig/)
 
 ### Usage
 
@@ -74,3 +80,13 @@ MIT
 [koa]: http://koajs.com
 [swig]: http://paularmstrong.github.io/swig/
 
+[npm-img]: https://img.shields.io/npm/v/koa-swig.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/koa-swig
+[travis-img]: https://img.shields.io/travis/koa-modules/koa-swig.svg?style=flat-square
+[travis-url]: https://travis-ci.org/koa-modules/koa-swig
+[coveralls-img]: https://img.shields.io/coveralls/koa-modules/koa-swig.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/koa-modules/koa-swig?branch=master
+[license-img]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
+[license-url]: LICENSE
+[david-img]: https://img.shields.io/david/koa-modules/koa-swig.svg?style=flat-square
+[david-url]: https://david-dm.org/koa-modules/koa-swig

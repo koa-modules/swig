@@ -4,9 +4,10 @@
  * Module dependencies.
  */
 
+var request = require('supertest');
+var should = require('should');
 var render = require('..');
 var path = require('path');
-var request = require('supertest');
 var koa = require('koa');
 
 describe('koa-swig', function () {
@@ -95,6 +96,19 @@ describe('koa-swig', function () {
         .expect(200, done);
     });
 
+    it('should not overwrite context.render', function (done) {
+      var app = koa();
+      app.context.render = function () { return 'not swig'; };
+      render(app, {});
+      app.use(function *() {
+        this.body = this.render();
+      });
+      request(app.listen())
+        .get('/')
+        .expect('not swig')
+        .expect(200, done);
+    });
+
   });
 
   describe('server', function () {
@@ -129,6 +143,41 @@ describe('koa-swig', function () {
     });
   });
 
+  describe('extensions', function () {
+    var app = koa();
+    render(app, {
+      root: path.join(__dirname, '../example'),
+      tags: {
+        now: {
+          compile: function () {
+            return '_output += _ext.now();';
+          },
+          parse: function () {
+            return true;
+          }
+        }
+      },
+      extensions: {
+        now: function () {
+          return Date.now();
+        }
+      }
+    });
+    app.use(function *() {
+      yield this.render('now');
+    });
+    it('should success', function (done) {
+      request(app.listen())
+      .get('/')
+      .expect(200)
+      .end(function (err, res) {
+        should.not.exist(err);
+        parseInt(res.text).should.above(0);
+        done();
+      });
+    });
+  });
+
   describe('flash', function () {
     var app = koa();
     var session = require('koa-session');
@@ -154,7 +203,7 @@ describe('koa-swig', function () {
   describe('expose swig', function () {
     var swig = render.swig;
     it('swig should be exposed', function () {
-      swig.version.should.equal('1.4.2');
+      should.exist(swig.version);
     });
   });
 
