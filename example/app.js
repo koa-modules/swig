@@ -35,7 +35,7 @@ app.use(function *() {
   });
 });
 
-if (process.env.NODE_ENV === 'test') {
+if (module.parent) {
   module.exports = app.callback();
 } else {
   app.listen(2333);

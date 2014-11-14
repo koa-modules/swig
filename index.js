@@ -12,10 +12,11 @@ var extname = path.extname;
 var resolve = path.resolve;
 
 /**
- *  Expose `render`.
+ *  Expose `render`, `swig`.
  */
 
 exports = module.exports = renderer;
+exports.swig = swig;
 
 /**
  *  Default render settings.
@@ -110,15 +111,8 @@ function renderer(app, settings) {
     }
 
     return html;
-
   }
 }
-
-/**
- *  Expose `swig`
- */
-
-exports.swig = swig;
 
 /**
  *  Add filters for Swig
