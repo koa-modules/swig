@@ -1,4 +1,4 @@
-# koa-swig [![Build Status](https://travis-ci.org/fundon/koa-swig.svg)](https://travis-ci.org/fundon/koa-swig)
+# koa-swig [![Build Status](https://travis-ci.org/koa-modules/koa-swig.svg)](https://travis-ci.org/koa-modules/koa-swig)
 
 [Koa][] view render based on [Swig][], support tags, filters, and extensions.
 
