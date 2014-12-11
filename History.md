@@ -1,3 +1,8 @@
+1.1.0 / 2014-12-11
+==================
+
+* use `state` instead of locals [#9](https://github.com/koa-modules/koa-swig/issues/9)
+
 0.9.0 / 2014-10-05
 ==================
 
