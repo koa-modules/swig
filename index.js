@@ -90,8 +90,8 @@ function renderer(app, settings) {
     // resolve
     view = resolve(root, view);
 
-    // merge ctx.locals, for `koa-locals`
-    var opts = this.locals || {};
+    // merge ctx.state
+    var opts = this.state || {};
 
     // merge ctx.flash, for `koa-flash`
     mixin(opts, { flash: this.flash, cache: cache });

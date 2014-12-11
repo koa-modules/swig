@@ -200,6 +200,27 @@ describe('koa-swig', function () {
     });
   });
 
+  describe('koa state', function () {
+    var app = koa();
+    render(app, {
+      root: path.join(__dirname, '../example'),
+      ext: 'txt',
+      filters: {
+        format: function (v) { return v.toUpperCase(); }
+      }
+    });
+    app.use(function *() {
+      this.state = { name: 'koa-swig' };
+      yield this.render('basic.txt');
+    });
+    it('should success', function (done) {
+      request(app.listen())
+      .get('/')
+      .expect('KOA-SWIG\n')
+      .expect(200, done);
+    });
+  });
+
   describe('expose swig', function () {
     var swig = render.swig;
     it('swig should be exposed', function () {
