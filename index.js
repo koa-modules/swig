@@ -68,7 +68,7 @@ function renderer(app, settings) {
     cache: cache,
     locals: locals
   }
-  if (settings.varControls && settings.varControls.length === 2) {
+  if (settings.varControls) {
     mixin(defaults, { varControls: settings.varControls });
   }
   swig.setDefaults(defaults);
