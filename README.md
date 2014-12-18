@@ -55,6 +55,7 @@ app.listen(2333);
   - autoescape
   - cache
   - locals
+  - varControls
 
 * filters: swig custom [filters](http://paularmstrong.github.io/swig/docs/extending/#filters)
 
