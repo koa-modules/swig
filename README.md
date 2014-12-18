@@ -20,7 +20,7 @@ npm install koa-swig
 
 #### Features
 
-* First, automatically merge `ctx.locals`.
+* First, automatically merge `ctx.state` from koa 0.14.
 * Second, automatically merge `ctx.flash`.
 * Finally, merge custom locals.
 
