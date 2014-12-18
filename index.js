@@ -67,9 +67,9 @@ function renderer(app, settings) {
     autoescape: settings.autoescape,
     cache: cache,
     locals: locals
-  }
+  };
   if (settings.varControls) {
-    mixin(defaults, { varControls: settings.varControls });
+    defaults.varControls = settings.varControls;
   }
   swig.setDefaults(defaults);
 
