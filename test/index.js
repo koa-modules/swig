@@ -221,6 +221,32 @@ describe('koa-swig', function () {
     });
   });
 
+  describe('variable control', function () {
+    it('should success', function (done) {
+      var app = koa();
+      render(app, {
+        root: path.join(__dirname, '../example'),
+        ext: 'html',
+        varControls: ['<%=', '%>']
+      });
+
+      app.use(function *() {
+        yield this.render('var-control', {
+          variable: 'pass'
+        });
+      });
+      request(app.listen())
+        .get('/')
+        .expect(/pass/)
+        .expect(200, done);
+    });
+
+    after(function () {
+      var app = koa();
+      render(app, { varControls: ['{{', '}}']});
+    });
+  });
+
   describe('expose swig', function () {
     var swig = render.swig;
     it('swig should be exposed', function () {

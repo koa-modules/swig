@@ -63,11 +63,15 @@ function renderer(app, settings) {
   var root = settings.root;
   var locals = settings.locals;
   var cache = settings.cache;
-  swig.setDefaults({
+  var defaults = {
     autoescape: settings.autoescape,
     cache: cache,
     locals: locals
-  });
+  }
+  if (settings.varControls) {
+    mixin(defaults, { varControls: settings.varControls });
+  }
+  swig.setDefaults(defaults);
 
   // swig custom filters
   setFilters(swig, settings.filters);
