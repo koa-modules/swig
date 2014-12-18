@@ -66,7 +66,8 @@ function renderer(app, settings) {
   swig.setDefaults({
     autoescape: settings.autoescape,
     cache: cache,
-    locals: locals
+    locals: locals,
+    varControls: settings.varControls
   });
 
   // swig custom filters
