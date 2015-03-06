@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- *  Module dependences.
+ * Module dependences.
  */
 
 var debug = require('debug')('koa:swig');
@@ -12,14 +12,14 @@ var extname = path.extname;
 var resolve = path.resolve;
 
 /**
- *  Expose `render`, `swig`.
+ * Expose `render`, `swig`.
  */
 
 exports = module.exports = renderer;
 exports.swig = swig;
 
 /**
- *  Default render settings.
+ * Default render settings.
  */
 
 var defaultSettings = {
@@ -82,7 +82,7 @@ function renderer(app, settings) {
   // add extensions for custom tags
   setExtensions(swig, settings.extensions);
 
-  function *render(view, options) {
+  function* render(view, options) {
     // default extname
     var e = extname(view);
 
@@ -129,7 +129,7 @@ function setFilters(swig, filters) {
 }
 
 /**
- *  Add tags for Swig
+ * Add tags for Swig
  */
 
 function setTags(swig, tags) {
@@ -141,7 +141,7 @@ function setTags(swig, tags) {
 }
 
 /**
- *  Add extensions for Swig
+ * Add extensions for Swig
  */
 
 function setExtensions(swig, extensions) {

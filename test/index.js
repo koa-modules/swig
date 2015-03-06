@@ -183,7 +183,7 @@ describe('koa-swig', function () {
     var session = require('koa-session');
     var flash = require('koa-flash');
     app.keys = ['foo'];
-    app.use(session());
+    app.use(session(app));
     app.use(flash({ key: 'bar' }));
     render(app, {
       root: path.join(__dirname, '../example')

@@ -20,26 +20,20 @@
   "license": "MIT",
   "devDependencies": {
     "istanbul-harmony": "*",
-    "koa": "*",
-    "koa-flash": "0",
-    "koa-session": "2",
-    "mocha": "*",
-    "should": "*",
-    "supertest": "*"
+    "koa": "^0.18.1",
+    "koa-flash": "^0.1.0",
+    "koa-session": "^3.1.0",
+    "mocha": "^2.1.0",
+    "should": "^5.1.0",
+    "supertest": "^0.15.0"
   },
   "dependencies": {
-    "debug": "^2.1.0",
+    "debug": "^2.1.2",
     "swig": "^1.4.2",
     "utils-merge": "^1.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/koa-modules/koa-swig.git"
-  },
+  "repository": "koa-modules/swig.git",
   "files": [
     "index.js"
-  ],
-  "bugs": {
-    "url": "https://github.com/koa-modules/koa-swig/issues"
-  }
+  ]
 }

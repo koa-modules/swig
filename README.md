@@ -83,11 +83,11 @@ MIT
 
 [npm-img]: https://img.shields.io/npm/v/koa-swig.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/koa-swig
-[travis-img]: https://img.shields.io/travis/koa-modules/koa-swig.svg?style=flat-square
-[travis-url]: https://travis-ci.org/koa-modules/koa-swig
-[coveralls-img]: https://img.shields.io/coveralls/koa-modules/koa-swig.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/koa-modules/koa-swig?branch=master
+[travis-img]: https://img.shields.io/travis/koa-modules/swig.svg?style=flat-square
+[travis-url]: https://travis-ci.org/koa-modules/swig
+[coveralls-img]: https://img.shields.io/coveralls/koa-modules/swig.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/koa-modules/swig?branch=master
 [license-img]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
 [license-url]: LICENSE
-[david-img]: https://img.shields.io/david/koa-modules/koa-swig.svg?style=flat-square
-[david-url]: https://david-dm.org/koa-modules/koa-swig
+[david-img]: https://img.shields.io/david/koa-modules/swig.svg?style=flat-square
+[david-url]: https://david-dm.org/koa-modules/swig
