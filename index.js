@@ -1,3 +1,9 @@
+/*!
+ * swig
+ * Copyright(c) 2015 Fangdun Cai
+ * MIT Licensed
+ */
+
 'use strict';
 
 /**
@@ -119,7 +125,7 @@ function renderer(app, settings) {
 }
 
 /**
- *  Add filters for Swig
+ * Add filters for Swig
  */
 
 function setFilters(swig, filters) {
