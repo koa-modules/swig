@@ -14,7 +14,7 @@ var app = koa();
 var locals = pkg;
 
 var filters = {
-  formatVersion: function (version) {
+  formatVersion: function(version) {
     return '@v' + version;
   }
 };
@@ -26,7 +26,7 @@ app.context.render = render({
   filters: filters
 });
 
-app.use(function *() {
+app.use(function*() {
   yield this.render('index', {
     user: {
       name: 'fundon',
