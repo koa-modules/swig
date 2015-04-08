@@ -19,7 +19,7 @@ var filters = {
   }
 };
 
-render(app, {
+app.context.render = render({
   root: path.join(__dirname, 'views'),
   ext: 'html',
   locals: locals,

@@ -10,12 +10,13 @@
  * Module dependences.
  */
 
-var debug = require('debug')('koa:swig');
-var mixin = require('utils-merge');
-var path = require('path');
-var swig = require('swig');
-var extname = path.extname;
-var resolve = path.resolve;
+const debug = require('debug')('koa:swig');
+const mixin = require('utils-merge');
+const thenify = require('thenify');
+const path = require('path');
+const swig = require('swig');
+const extname = path.extname;
+const resolve = path.resolve;
 
 /**
  * Expose `render`, `swig`.
@@ -28,35 +29,25 @@ exports.swig = swig;
  * Default render settings.
  */
 
-var defaultSettings = {
+const defaultSettings = {
   autoescape: true,
   root: 'views',
   cache: 'memory',
   ext: 'html',
   writeBody: true
-  /*
-  locals: {},
-  filters: {}.
-  tags: {},
-  extensions: {}
-  */
+    /*
+    locals: {},
+    filters: {}.
+    tags: {},
+    extensions: {}
+    */
 };
 
 // Generator `renderFile`
 
-function renderFile(pathName, locals) {
-  return function (done) {
-    swig.renderFile(pathName, locals, done);
-  };
-}
+const renderFile = thenify(swig.renderFile);
 
-function renderer(app, settings) {
-  if (app.context.render) {
-    return;
-  }
-
-  app.context.render = render;
-
+function renderer(settings) {
   // merge default settings
   var sets = Object.create(defaultSettings);
 
@@ -88,6 +79,8 @@ function renderer(app, settings) {
   // add extensions for custom tags
   setExtensions(swig, settings.extensions);
 
+  return render;
+
   function* render(view, options) {
     // default extname
     var e = extname(view);
@@ -103,8 +96,11 @@ function renderer(app, settings) {
     // merge ctx.state
     var opts = this.state || {};
 
-    // merge ctx.flash, for `koa-flash`
-    mixin(opts, { flash: this.flash, cache: cache });
+    // merge ctx.flash, for `koa-flash` or `koa-connect-flash`
+    mixin(opts, {
+      flash: this.flash,
+      cache: cache
+    });
 
     // merge settings.locals
     mixin(opts, locals);

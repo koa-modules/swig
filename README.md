@@ -31,7 +31,7 @@ var koa = require('koa');
 var render = require('koa-swig');
 var app = koa();
 
-render(app, {
+app.context.render = render({
   root: path.join(__dirname, 'views'),
   autoescape: true,
   cache: 'memory', // disable, set to false
