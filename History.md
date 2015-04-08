@@ -1,3 +1,8 @@
+1.4.0 / 2015-04-09
+==================
+
+* use of `app.context.render = render(settings)` instead of `render(app, settings)`
+
 1.1.0 / 2014-12-11
 ==================
 
