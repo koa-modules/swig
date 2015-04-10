@@ -12,6 +12,18 @@
 
 ### Usage
 
+* **v2.x**
+
+    ```js
+    app.context.render = render(settings);
+    ```
+
+* **v1.x**
+
+    ```js
+    render(app, settings);
+    ```
+
 #### Install
 
 ```
@@ -23,20 +35,6 @@ npm install koa-swig
 * First, automatically merge `ctx.state` from koa 0.14.
 * Second, automatically merge `ctx.flash`.
 * Finally, merge custom locals.
-
-#### Usage
-
-* v2.x
-
-    ```js
-    app.context.render = render(settings);
-    ```
-
-* v1.x
-
-    ```js
-    render(app, settings);
-    ```
 
 #### Example
 
