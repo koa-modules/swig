@@ -39,7 +39,7 @@ var defaultSettings = {
 // Generator `renderFile`
 
 function renderFile(pathName, locals) {
-  return function (done) {
+  return function(done) {
     swig.renderFile(pathName, locals, done);
   };
 }
@@ -98,7 +98,10 @@ function renderer(app, settings) {
     var opts = this.state || {};
 
     // merge ctx.flash, for `koa-flash`
-    mixin(opts, { flash: this.flash, cache: cache });
+    mixin(opts, {
+      flash: this.flash,
+      cache: cache
+    });
 
     // merge settings.locals
     mixin(opts, locals);
