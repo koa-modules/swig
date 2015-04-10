@@ -24,6 +24,20 @@ npm install koa-swig
 * Second, automatically merge `ctx.flash`.
 * Finally, merge custom locals.
 
+#### Usage
+
+* v2.x
+
+    ```js
+    app.context.render = render(settings);
+    ```
+
+* v1.x
+
+    ```js
+    render(app, settings);
+    ```
+
 #### Example
 
 ```js
