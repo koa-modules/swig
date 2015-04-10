@@ -1,7 +1,12 @@
-1.4.0 / 2015-04-09
+2.0.0 / 2015-04-10
 ==================
 
-* use of `app.context.render = render(settings)` instead of `render(app, settings)`
+* use of app.context.render = render(settings) instead of render(app, settings)
+
+1.5.0 / 2015-04-10
+==================
+
+* update deps and format codes
 
 1.1.0 / 2014-12-11
 ==================
