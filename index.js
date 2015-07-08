@@ -104,6 +104,9 @@ function renderer(settings) {
 
     // merge settings.locals
     mixin(opts, locals);
+    if(this.locals){
+      mixin(opts, this.locals);
+    }
 
     // merge options
     mixin(opts, options || {});
