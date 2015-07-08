@@ -216,6 +216,26 @@ describe('koa-swig', function() {
     });
   });
 
+  describe('locals', function() {
+    var app = koa();
+    var locals = require('koa-locals');
+
+    locals(app, {hasLocals:true});
+    app.context.render = render({
+      root: path.join(__dirname, '../example')
+    });
+    app.use(function*() {
+      this.locals.hasLocals = true;
+      yield this.render('locals');
+    });
+    it('should success', function(done) {
+      request(app.listen())
+        .get('/')
+        .expect(/Request has locals/)
+        .expect(200, done);
+    });
+  });  
+
   describe('koa state', function() {
     var app = koa();
     app.context.render = render({
