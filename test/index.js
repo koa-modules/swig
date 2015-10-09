@@ -269,6 +269,62 @@ describe('koa-swig', function() {
     });
   });
 
+  describe('Tag control', function () {
+      it('shoud success', function (done) {
+          var app = koa();
+          app.context.render = render({
+              root: path.join(__dirname, '../example'),
+              ext: 'html',
+              tagControls: ['<%', '%>']
+          });
+
+          app.use(function*() {
+              yield this.render('tag-control', {
+                  arr: [1,2,3]
+              });
+          });
+
+          request(app.listen())
+              .get('/')
+              .expect(/123/)
+              .expect(200, done);
+
+          after(function() {
+            var app = koa();
+            app.context.render = render({
+              tagControls: ['{%', '%}']
+            });
+          });
+      });
+  });
+
+  describe('Comment control', function () {
+      it('shoud success', function (done) {
+          var app = koa();
+          app.context.render = render({
+              root: path.join(__dirname, '../example'),
+              ext: 'html',
+              cmtControls: ['<#', '#>']
+          });
+          app.use(function*() {
+              yield this.render('cmt-control', {
+                  variable: 'pass'
+              });
+          });
+          request(app.listen())
+              .get('/')
+              .expect(/pass/)
+              .expect(200, done);
+
+          after(function() {
+            var app = koa();
+            app.context.render = render({
+              cmtControls: ['{#', '#}']
+            });
+          });
+      });
+  });
+
   describe('expose swig', function() {
     var swig = render.swig;
     it('swig should be exposed', function() {

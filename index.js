@@ -68,6 +68,12 @@ function renderer(settings) {
   if (settings.varControls) {
     defaults.varControls = settings.varControls;
   }
+  if (settings.tagControls) {
+    defaults.tagControls = settings.tagControls;
+  }
+  if (settings.cmtControls) {
+    defaults.cmtControls = settings.cmtControls;
+  }
   swig.setDefaults(defaults);
 
   // swig custom filters
