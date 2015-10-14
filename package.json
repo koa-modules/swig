@@ -1,6 +1,6 @@
 {
   "name": "koa-swig",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Koa view render based on Swig, support tags, filters, and extensions.",
   "main": "index.js",
   "scripts": {
@@ -20,12 +20,12 @@
   "license": "MIT",
   "devDependencies": {
     "istanbul-harmony": "*",
-    "koa": "^0.x",
+    "koa": "^1.x",
     "koa-flash": "^1.x",
     "koa-session": "^3.x",
     "mocha": "^2.x",
-    "should": "^5.x",
-    "supertest": "^0.x"
+    "should": "^7.x",
+    "supertest": "^1.x"
   },
   "dependencies": {
     "debug": "^2.x",
