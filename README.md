@@ -68,6 +68,8 @@ app.listen(2333);
   - cache
   - locals
   - varControls
+  - tagControls
+  - cmtControls
 
 * filters: swig custom [filters](http://paularmstrong.github.io/swig/docs/extending/#filters)
 
