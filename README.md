@@ -83,6 +83,12 @@ app.listen(2333);
 
 * writeBody: default(true) auto write body and response
 
+#### Methods
+
+* render.swig.setLocals
+
+* render.swig.getLocals
+
 
 #### Others
 

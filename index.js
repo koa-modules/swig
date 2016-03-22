@@ -58,7 +58,7 @@ function renderer(settings) {
   settings = sets;
 
   var root = settings.root;
-  var locals = settings.locals;
+  var locals = settings.locals || {};
   var cache = settings.cache;
   var defaults = {
     autoescape: settings.autoescape,
@@ -84,6 +84,10 @@ function renderer(settings) {
 
   // add extensions for custom tags
   setExtensions(swig, settings.extensions);
+  
+  swig.setLocals = setLocals;
+  
+  swig.getLocals = getLocals;   
 
   return render;
 
@@ -124,6 +128,15 @@ function renderer(settings) {
 
     return html;
   }
+  
+  function setLocals(args) {
+      mixin(locals,args);
+  }
+  
+  function getLocals(key) {
+      return locals[key];
+  }
+  
 }
 
 /**
@@ -156,4 +169,6 @@ function setExtensions(swig, extensions) {
   for (var name in extensions) {
     swig.setExtension(name, extensions[name]);
   }
+  
+  
 }
