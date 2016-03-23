@@ -84,10 +84,10 @@ function renderer(settings) {
 
   // add extensions for custom tags
   setExtensions(swig, settings.extensions);
-  
+
   swig.setLocals = setLocals;
-  
-  swig.getLocals = getLocals;   
+
+  swig.getLocals = getLocals;
 
   return render;
 
@@ -128,15 +128,15 @@ function renderer(settings) {
 
     return html;
   }
-  
+
   function setLocals(args) {
-      mixin(locals,args);
+    mixin(locals,args);
   }
-  
+
   function getLocals(key) {
-      return locals[key];
+    return locals[key];
   }
-  
+
 }
 
 /**
@@ -169,6 +169,6 @@ function setExtensions(swig, extensions) {
   for (var name in extensions) {
     swig.setExtension(name, extensions[name]);
   }
-  
-  
+
+
 }

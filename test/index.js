@@ -270,59 +270,59 @@ describe('koa-swig', function() {
   });
 
   describe('Tag control', function () {
-      it('should success', function (done) {
-          var app = koa();
-          app.context.render = render({
-              root: path.join(__dirname, '../example'),
-              ext: 'html',
-              tagControls: ['<%', '%>']
-          });
-
-          app.use(function*() {
-              yield this.render('tag-control', {
-                  arr: [1,2,3]
-              });
-          });
-
-          request(app.listen())
-              .get('/')
-              .expect(/123/)
-              .expect(200, done);
-
-          after(function() {
-            var app = koa();
-            app.context.render = render({
-              tagControls: ['{%', '%}']
-            });
-          });
+    it('should success', function (done) {
+      var app = koa();
+      app.context.render = render({
+        root: path.join(__dirname, '../example'),
+        ext: 'html',
+        tagControls: ['<%', '%>']
       });
+
+      app.use(function*() {
+        yield this.render('tag-control', {
+          arr: [1,2,3]
+        });
+      });
+
+      request(app.listen())
+        .get('/')
+        .expect(/123/)
+        .expect(200, done);
+
+      after(function() {
+        var app = koa();
+        app.context.render = render({
+          tagControls: ['{%', '%}']
+        });
+      });
+    });
   });
 
   describe('Comment control', function () {
-      it('should success', function (done) {
-          var app = koa();
-          app.context.render = render({
-              root: path.join(__dirname, '../example'),
-              ext: 'html',
-              cmtControls: ['<#', '#>']
-          });
-          app.use(function*() {
-              yield this.render('cmt-control', {
-                  variable: 'pass'
-              });
-          });
-          request(app.listen())
-              .get('/')
-              .expect(/pass/)
-              .expect(200, done);
-
-          after(function() {
-            var app = koa();
-            app.context.render = render({
-              cmtControls: ['{#', '#}']
-            });
-          });
+    it('should success', function (done) {
+      var app = koa();
+      app.context.render = render({
+        root: path.join(__dirname, '../example'),
+        ext: 'html',
+        cmtControls: ['<#', '#>']
       });
+      app.use(function*() {
+        yield this.render('cmt-control', {
+          variable: 'pass'
+        });
+      });
+      request(app.listen())
+        .get('/')
+        .expect(/pass/)
+        .expect(200, done);
+
+      after(function() {
+        var app = koa();
+        app.context.render = render({
+          cmtControls: ['{#', '#}']
+        });
+      });
+    });
   });
 
   describe('expose swig', function() {
@@ -331,42 +331,42 @@ describe('koa-swig', function() {
       should.exist(swig.version);
     });
   });
-  
+
   describe('test setLocals',function() {
-      var swig = render.swig
+    var swig = render.swig
   })
-  
+
   describe('test setLocals',function() {
-      it('should success',function(done){
-          var app = koa();
-          app.context.render = render({
-              root: path.join(__dirname, '../example'),
-              ext: 'html'
-          });
-          render.swig.setLocals({
-              'local': 'hello world'
-          })
-          app.use(function*() {
-              yield this.render('locals-test');
-          });
-          request(app.listen())
-            .get('/')
-            .expect(/hello world/)
-            .expect(200, done);
+    it('should success',function(done){
+      var app = koa();
+      app.context.render = render({
+        root: path.join(__dirname, '../example'),
+        ext: 'html'
+      });
+      render.swig.setLocals({
+        'local': 'hello world'
       })
+      app.use(function*() {
+        yield this.render('locals-test');
+      });
+      request(app.listen())
+        .get('/')
+        .expect(/hello world/)
+        .expect(200, done);
+    })
   })
-  
+
   describe('test getLocals',function() {
-      it('should success',function(){
-          var app = koa();
-          app.context.render = render({
-              root: path.join(__dirname, '../example'),
-              ext: 'html',
-              locals: {
-                  'local': 'hello world'
-              }
-          });
-          render.swig.getLocals('local').should.equal('hello world');
-      })
+    it('should success',function(){
+      var app = koa();
+      app.context.render = render({
+        root: path.join(__dirname, '../example'),
+        ext: 'html',
+        locals: {
+          'local': 'hello world'
+        }
+      });
+      render.swig.getLocals('local').should.equal('hello world');
+    })
   })
 });
