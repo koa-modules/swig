@@ -270,7 +270,7 @@ describe('koa-swig', function() {
   });
 
   describe('Tag control', function () {
-      it('shoud success', function (done) {
+      it('should success', function (done) {
           var app = koa();
           app.context.render = render({
               root: path.join(__dirname, '../example'),
@@ -299,7 +299,7 @@ describe('koa-swig', function() {
   });
 
   describe('Comment control', function () {
-      it('shoud success', function (done) {
+      it('should success', function (done) {
           var app = koa();
           app.context.render = render({
               root: path.join(__dirname, '../example'),
@@ -331,6 +331,42 @@ describe('koa-swig', function() {
       should.exist(swig.version);
     });
   });
-
-
+  
+  describe('test setLocals',function() {
+      var swig = render.swig
+  })
+  
+  describe('test setLocals',function() {
+      it('should success',function(done){
+          var app = koa();
+          app.context.render = render({
+              root: path.join(__dirname, '../example'),
+              ext: 'html'
+          });
+          render.swig.setLocals({
+              'local': 'hello world'
+          })
+          app.use(function*() {
+              yield this.render('locals-test');
+          });
+          request(app.listen())
+            .get('/')
+            .expect(/hello world/)
+            .expect(200, done);
+      })
+  })
+  
+  describe('test getLocals',function() {
+      it('should success',function(){
+          var app = koa();
+          app.context.render = render({
+              root: path.join(__dirname, '../example'),
+              ext: 'html',
+              locals: {
+                  'local': 'hello world'
+              }
+          });
+          render.swig.getLocals('local').should.equal('hello world');
+      })
+  })
 });
