@@ -61,6 +61,18 @@ app.use(function *() {
 app.listen(2333);
 ```
 
+```js
+// koa v2.x
+var co = require('co');
+
+app.context.render = co.wrapper(render({
+  // ...your setting
+  writeBody: false
+}));
+
+app.use(async ctx => ctx.body = await ctx.render('index'));
+```
+
 #### Settings
 
 * [swig options](http://paularmstrong.github.io/swig/docs/api/#SwigOpts)
