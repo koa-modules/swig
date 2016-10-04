@@ -65,7 +65,7 @@ app.listen(2333);
 // koa v2.x
 var co = require('co');
 
-app.context.render = co.wrapper(render({
+app.context.render = co.wrap(render({
   // ...your setting
   writeBody: false
 }));
