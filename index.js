@@ -14,7 +14,7 @@ const debug = require('debug')('koa:swig');
 const mixin = require('utils-merge');
 const thenify = require('thenify');
 const path = require('path');
-const swig = require('swig');
+const swig = require('swig-templates');
 const extname = path.extname;
 const resolve = path.resolve;
 
