@@ -1,6 +1,6 @@
 {
   "name": "koa-swig",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Koa view render based on Swig, support tags, filters, and extensions.",
   "main": "index.js",
   "scripts": {
@@ -23,13 +23,13 @@
     "koa": "^1.x",
     "koa-flash": "^1.x",
     "koa-session": "^3.x",
-    "mocha": "^2.x",
-    "should": "^7.x",
-    "supertest": "^1.x"
+    "mocha": "^3.x",
+    "should": "^11.x",
+    "supertest": "^2.x"
   },
   "dependencies": {
     "debug": "^2.x",
-    "swig": "^1.4.2",
+    "swig-templates": "^2.0.2",
     "thenify": "^3.1.0",
     "utils-merge": "^1.0.0"
   },
