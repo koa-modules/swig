@@ -9,6 +9,7 @@ var should = require('should');
 var render = require('..');
 var path = require('path');
 var Koa = require('koa');
+var mocha=require('mocha');
 
 describe('koa-swig', function() {
     describe('render', function() {
