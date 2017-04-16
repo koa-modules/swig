@@ -91,7 +91,7 @@ function renderer(settings) {
 
   return render;
 
-  function* render(view, options) {
+   async function render(view, options) {
     // default extname
     var e = extname(view);
 
@@ -119,7 +119,7 @@ function renderer(settings) {
     mixin(opts, options || {});
 
     debug('render %s %j', view, opts);
-    var html = yield renderFile(view, opts);
+    var html = await renderFile(view, opts);
     /* jshint validthis:true */
 
     if (settings.writeBody === true) {
