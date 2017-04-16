@@ -19,13 +19,13 @@
   "author": "fundon <cfddream@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "istanbul-harmony": "*",
-    "koa": "^1.x",
-    "koa-flash": "^1.x",
-    "koa-session": "^3.x",
+    "koa": "^2.x",
+    "koa-session": "^5.x",
     "mocha": "^3.x",
     "should": "^11.x",
-    "supertest": "^2.x"
+    "supertest": "^2.x",
+    "istanbul": "^0.4.5",
+    "koa-flash": "^1.0.0"
   },
   "dependencies": {
     "debug": "^2.x",

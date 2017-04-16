@@ -9,7 +9,7 @@ var render = require('..');
 var path = require('path');
 var pkg = require('../package');
 
-var app = koa();
+var app = new koa();
 
 var locals = pkg;
 
