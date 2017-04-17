@@ -22,6 +22,7 @@
     "istanbul-harmony": "*",
     "koa": "^1.x",
     "koa-flash": "^1.x",
+    "koa-locals": "^0.3.0",
     "koa-session": "^3.x",
     "mocha": "^3.x",
     "should": "^11.x",
